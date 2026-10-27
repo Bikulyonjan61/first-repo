@@ -29,7 +29,8 @@ def count_files(folder_path):
 
     print(f"File counts in: {folder.resolve()}\n")
 
-    for extension, count in sorted(extensions.items()):
+    # Print the most common extension first
+    for extension, count in extensions.most_common():
         print(f"{extension}: {count}")
 
 

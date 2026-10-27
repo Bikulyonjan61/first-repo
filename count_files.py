@@ -1,7 +1,6 @@
 
 #!/usr/bin/env python3
 
-import os
 import sys
 from collections import Counter
 from pathlib import Path
@@ -11,7 +10,10 @@ def count_files(folder_path):
     folder = Path(folder_path)
 
     if not folder.is_dir():
-        print(f"Error: '{folder_path}' is not a valid folder.")
+        print(
+            f"Error: '{folder_path}' is not a valid folder.",
+            file=sys.stderr
+        )
         sys.exit(1)
 
     extensions = Counter()
@@ -33,7 +35,10 @@ def count_files(folder_path):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python3 count_files.py <folder_path>")
+        print(
+            "Usage: python3 count_files.py <folder_path>",
+            file=sys.stderr
+        )
         sys.exit(1)
 
     count_files(sys.argv[1])

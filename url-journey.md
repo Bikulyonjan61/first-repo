@@ -14,10 +14,10 @@ Suppose you want to visit https://www.google.com/. The browser breaks down the d
 Domain, protocol and path. The https is a protocol Hypertext Transfer Protocol Secure it is a widely used protocol other than http which is less secure version of it. Than the domain I.e www.google.com  and the path i.e the part after the / which can be used to visit pages of the website. Than a DNS request is send.
 
 ## 2. DNS finds the IP address
-The DNS server is like a phone book of the internet where it holds the ip address and its domain name for all the websites in the internet. The browsers sends the request to the DNS server the server first searches the domain name in the cache. The cache holds the frequently searched or popular domain names. If not found it searches the server and than the domain revenant ip address is found.
+The DNS server is like a phone book of the internet where it holds the ip address and its domain name for the websites. The browsers sends the request to the DNS server the server first searches the domain name in the cache. The cache holds the recently used domain names. If not found it searches the server and than the domain revenant ip address is found.
 
 ## 3. Connecting to the server
-A computer uses various program on the internet like emails, ssh etc so if the ip address is the address of the computer the ports are the home number, In computer port 443 is used for HTTPS and port 80 is used for HTTP. There is no reason the way it is assigned it is just aggreed and assigned. The TCP helps to transfer data through internet it is a protocol which transfers data over the internet securely in packets or chunks.
+A computer uses various program on the internet like emails, ssh etc so if the ip address is the address of the computer the ports are the home number, In computer port 443 is used for HTTPS and port 80 is used for HTTP. There is no reason the way it is assigned it is just aggreed and assigned. The TCP helps to transfer data through internet it is a protocol which transfers data over the internet in packets or chunks.
 
 ## 4. Encryption (TLS)
 HTTPS is the encrypted version of HTTP , IN HTTP it sends data over the internet in plain text which can be read by anyone but HTTPS wrapps the HTTP data into TLS which encrypts it using various method of cryptography
@@ -26,10 +26,10 @@ HTTPS is the encrypted version of HTTP , IN HTTP it sends data over the internet
 When you click at a link or a bottom on a website the http request is send to the server which contains path, header, get is usually send to get data such as images from the server while the path specifies the page requested by the user. Header contains the key information such as browser data, OS etc
 
 ## 6. The response
-The server than sends a response. We often see errors such as error 404 500 etc, every error has a code and they all are differenet error 404 refers to website not found while error 500 shows internal server error
+The server than sends a response. We often see errors such as error 404 500 etc, every error has a code and they all are differenet error 404 refers to page doesn't exist while error 500 shows internal server error
 
 ## 7. The browser shows the page
-The server uses the headers data and shows the page
+The browser uses the headers data and shows the page
 
 ##what I saw in the terminal
 When dig www.google.com is entered into the terminal it shows

@@ -1,8 +1,8 @@
-What happens when you type a URL
+#What happens when you type a URL
 
-#my notes
-1. If __name__= "__main__"
-   Suppose, In a file a function name is used to print name of the user and you need to borrow these code in another script so you import name from the file but when you run it the function runs itself even if you dont call it so to prevent it if __name__="__main__" is used it tells whether the script in main file or the imported function in a script. The name is a variable declared by python and changes for every file.
+##my notes
+1. If __name__== "__main__"
+   Suppose, In a file a function name is used to print name of the user and you need to borrow these code in another script so you import name from the file but when you run it the function runs itself even if you dont call it so to prevent it if __name__=="__main__" is used it tells whether the script in main file or the imported function in a script. The name is a variable declared by python and changes for every file.
 
 2. sys.argv
    When you run a file in terminal the elements or content after the file name can be used in the program. Suppose python code.py first. the first can be printed in the code using print(sys.argv[1]). Sys.argv[0] is the name of the file code.py and sys.argv[1] is the word after it.
@@ -30,3 +30,45 @@ The server than sends a response. We often see errors such as error 404 500 etc,
 
 ## 7. The browser shows the page
 The server uses the headers data and shows the page
+
+##what I saw in the terminal
+When dig www.google.com is entered into the terminal it shows
+;; ANSWER SECTION:
+google.com.		240	IN	A	142.251.223.238
+
+Google.com is the name the user asked about
+240 is the seconds the answer can be cached
+IN is the internet class
+A tells us is ip v4
+142.251.223.238 is the ip address of the building
+
+When curl -v google.com it shows the TCL,TSL and HTTPS step
+* IPv4: 142.251.222.164
+*   Trying 142.251.222.164:80...
+* Connected to googl.com (142.251.222.164) port 80
+
+Here as we can see the ip that we get in cmd dig is the same in curl as well and it shows it is connected to it by using port 80 that is HTTP
+
+(304) (OUT), TLS handshake, Client hello (1):
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+* (304) (IN), TLS handshake, Unknown (8):
+* (304) (IN), TLS handshake, Certificate (11):
+* (304) (IN), TLS handshake, CERT verify (15):
+* (304) (IN), TLS handshake, Finished (20):
+* (304) (OUT), TLS handshake, Finished (20):
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+
+Here TLS is used to encrypt the data and we can see the TLS handshake is done and finished
+
+ Server certificate:
+*  subject: CN=example.com
+*  start date: Sep 26 22:49:11 2026 GMT
+*  expire date: Dec 25 22:56:35 2026 GMT
+*  subjectAltName: host "example.com" matched cert's "example.com"
+*  issuer: C=US; O=SSL Corporation; CN=Cloudflare TLS Issuing ECC CA 3
+*  SSL certificate verify ok.
+
+Here the browser checks that it was issued by a trusted authority 
+

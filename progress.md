@@ -11,3 +11,12 @@
 	Tue 10 Nov, 8 PM: start Week 3 (Bash scripting). Write hello.sh with
   variables and read, then continue Bandit from level 5.
    - Bandit level: 5
+
+   ## Week 3
+   - Planned: Bash basics, conditionals, loops, arguments and functions, backup.sh, Bandit 6–10.
+   - Completed: bash scrpting done, backup.sh made, bandit level 10
+   - Evidence: file names ([check_path.sh], [loops.sh], [backup.sh], [count_lines.sh]) can check on github
+   - Problems: Bash was hard to start I struggled at first with error handling and arguments.
+   - Next action:
+   Mon 23 Nov, 10 PM: Week 4, install Multipass and launch an Ubuntu VM.
+   - Bandit level: 10

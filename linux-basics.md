@@ -43,3 +43,44 @@ cd is built into bash because it need to change the current working directories 
 apt is like an appstore for linux and it records the install in /var/lib/apt or /var/lib
 - What `/var/log/auth.log` records:
 it records authentication related logs. Every login and sudo with who,whom when and what command
+
+## 5. Users, groups and permissions
+### /etc/passwd: 7 fields
+`alice:x:1001:1001:Bikul,1,1,1,1:/home/alice:/bin/bash`
+1. alice = user
+2. x = password holder
+3. 1001 = user id
+4. 1001 = group id
+5. Bikul,1,1,1,1 = user details
+6. /home/alice = user folder location
+7. /bin/bash = login shell
+
+### /etc/shadow
+- What it stores: passwords in the form of hash
+- Why only root can read it: it contains password which can be read by administrater only
+- Why a password is stored as a hash, not the real password: because that way it is kept secure so noone can steal it
+
+### Reading permissions: `drwxrwsr-x root devs`
+- d = folder
+- rwx (first 3) =  read, write and open what the owner can do
+- rws (middle 3) = read, write and open , and the s means: special rule what the group can do
+- r-x (last 3) = read and open what others can do
+- root = belongs to root
+- devs = name of the team or shared folder
+
+### Numbers: 775
+- r = 4, w = 2, x = 1
+- 7 = 4+2+1 = rwx
+- 5 = 4-1 = r-x
+
+### Making a shared team folder (4 steps)
+1. `sudo groupadd devs`: created a group called devs
+2. `sudo usermod -aG devs alice`: adds alice to group devs
+3. `sudo chgrp devs /srv/project` and `sudo chmod 775 /srv/project`: changes permission of the folder and chgrp devs give the folder /srv/project group devs
+4. `sudo chmod g+s /srv/project`: if a user adds a file to the folder, the group will become devs and the owner will still be the user who created it
+
+### Traps I hit
+- Forgetting `-a` in usermod: replaces all the users group, so ubuntu will loss the sudo access and admin access will be gone
+- New group not showing in `id`: should exit and open again
+- Relative vs absolute path (after-fix.txt): relative path is just the folder name while the absolute path is the full location of the folder that is /srv/project/after-fix.txt
+

@@ -29,14 +29,14 @@
 - VM IP vs Mac IP:
     both ips are different in different network. VM 192.168.252.2 vs Mac 192.168.1.69
 - Why they are different:
-    they are different because vm is a totally new computer envinment with its own ip address
+    they are different because vm is on multipass own private network and mac acts as the router
 
 ## 4. Linux folder layout
 - /etc:config file for the whole system
 - /var/log: it has data that changes such as cloud-init.log and auth.log
 - /home: users personal folder
 - /usr and why /bin -> usr/bin: installed program and their files. /bin is a link (shortcut) to /usr/bin"
-- /proc: short for processes prints the process
+- /proc: short for processes prints live info from the kernel when you read it
 
 ## 5. What I learned
 - Why /proc/meminfo is 0 bytes but shows numbers: 

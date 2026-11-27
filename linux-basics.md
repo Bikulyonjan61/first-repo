@@ -86,17 +86,17 @@ it records authentication related logs. Every login and sudo with who,whom when 
 
 ## 6. Packages (apt)
 - Repository = its a ubuntu servers on the internet or like a warehouse where all the programs are
-- Where the repository address is written:
+- Where the repository address is written: /etc/apt/sources.list.d/ubuntu.sources from url :http://archive.ubuntu.com/ubuntu
 - Why security updates have their own warehouse: because its fast as it is stored in linux server and updates are faster reached and also it gived control
 - apt update vs apt upgrade: apt update gets list of all the catalogue but nothing gets installed while apt upgrade upgrades the latest version of the program on you device
 - apt remove vs apt purge: apt remove uninstalls the program but keeps its setting in /etc but apt purge deletes everything for fresh start
-- apt list --upgradable / apt show / apt policy: apt list --upgradabale upgrades everything on the list from apt upgrade that is upgradable, apt show shows the package information like its version warehouse section and its description
+- apt list --upgradable / apt show / apt policy: apt list --upgradabale shows what can be upgraded, apt show shows the package information like its version warehouse section and its description, apt policy compares the version you have with the version apt would install.
 - Exit code 127 means: it means command not found
 - After upgrading, why services need a restart: progams might be stored in memory and so we need to restart to get the upgraded one
 
 ## 7. Managing users
-- UID vs GID, and why bob got 1003: UID is the user id and GID is the group id they both are different, bob got 1003 as 1000 was taken by ubuntu 1001 was taken by alice and 1002 was taken by devs
-- What adduser creates: adduser creates new user
+- UID vs GID, and why bob got 1003: UID is the user id and GID is the group id they both are different, bob got 1003 as 1000 was taken by ubuntu 1001 was taken by alice and 1002 was taken by devs,UID 1002 was actually free. It was GID 1002 that devs had taken. adduser wants the UID and GID to match, so it skipped to the first number free in both lists.
+- What adduser creates: It makes the user + a personal group + a home folder, with starter files copied from /etc/skel.
 - deluser vs deluser --remove-home --backup-to: deluser deletes user but keeps its data so when a new user is added it gets the previous user id and data to prevent it we first backup the data by deluser --remove-home --backup-to and del the user with its informations
 - Orphaned files: what they are and why they're dangerous: as I told above when the user is deleted by command deluser, the old user files such as /home/bob etc are left and other . hidden files those files are called orphaned files and when new user is added it gets the uid of the previous user and the files too.
 - Why backups need protecting (chmod 600): backup need protecting as it holds previous owner sensetive information and command history so we use chmod 600 and give access of read and write to the root user only
@@ -105,7 +105,7 @@ it records authentication related logs. Every login and sudo with who,whom when 
 ## 8. sudo
 - What /etc/sudoers is: it holds all the sudo rules and can be seen and edited by visudo
 - %sudo ALL=(ALL:ALL) ALL means: sudo is the group and 1st all is which machine, 2nd all is which user, 3rd all is as which group and last all is which command
-- Why edit it only with visudo: 
+- Why edit it only with visudo: it checks for mistake before saving
 - Whose password sudo asks for, and why: sudo asks for passward of the user which it is currently is in and which has access because to check the identity
-- Give / take admin: (two commands)
-- Least privilege means: 
+- Give / take admin: sudo usermod -aG sudo alice and sudo gpasswd -d alice sudo.
+- Least privilege means: give each person only the access they need, only for as long as they need it.

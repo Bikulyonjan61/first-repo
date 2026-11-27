@@ -84,3 +84,28 @@ it records authentication related logs. Every login and sudo with who,whom when 
 - New group not showing in `id`: should exit and open again
 - Relative vs absolute path (after-fix.txt): relative path is just the folder name while the absolute path is the full location of the folder that is /srv/project/after-fix.txt
 
+## 6. Packages (apt)
+- Repository = its a ubuntu servers on the internet or like a warehouse where all the programs are
+- Where the repository address is written:
+- Why security updates have their own warehouse: because its fast as it is stored in linux server and updates are faster reached and also it gived control
+- apt update vs apt upgrade: apt update gets list of all the catalogue but nothing gets installed while apt upgrade upgrades the latest version of the program on you device
+- apt remove vs apt purge: apt remove uninstalls the program but keeps its setting in /etc but apt purge deletes everything for fresh start
+- apt list --upgradable / apt show / apt policy: apt list --upgradabale upgrades everything on the list from apt upgrade that is upgradable, apt show shows the package information like its version warehouse section and its description
+- Exit code 127 means: it means command not found
+- After upgrading, why services need a restart: progams might be stored in memory and so we need to restart to get the upgraded one
+
+## 7. Managing users
+- UID vs GID, and why bob got 1003: UID is the user id and GID is the group id they both are different, bob got 1003 as 1000 was taken by ubuntu 1001 was taken by alice and 1002 was taken by devs
+- What adduser creates: adduser creates new user
+- deluser vs deluser --remove-home --backup-to: deluser deletes user but keeps its data so when a new user is added it gets the previous user id and data to prevent it we first backup the data by deluser --remove-home --backup-to and del the user with its informations
+- Orphaned files: what they are and why they're dangerous: as I told above when the user is deleted by command deluser, the old user files such as /home/bob etc are left and other . hidden files those files are called orphaned files and when new user is added it gets the uid of the previous user and the files too.
+- Why backups need protecting (chmod 600): backup need protecting as it holds previous owner sensetive information and command history so we use chmod 600 and give access of read and write to the root user only
+- Trap: 2>/dev/null hid my own typo (file vs find): I mistakingly typed file instead of find in sudo find / alice /home/alice 2>/dev/null and when and error occured the 2>/dev/null hide the error and ntg showed up
+
+## 8. sudo
+- What /etc/sudoers is: it holds all the sudo rules and can be seen and edited by visudo
+- %sudo ALL=(ALL:ALL) ALL means: sudo is the group and 1st all is which machine, 2nd all is which user, 3rd all is as which group and last all is which command
+- Why edit it only with visudo: 
+- Whose password sudo asks for, and why: sudo asks for passward of the user which it is currently is in and which has access because to check the identity
+- Give / take admin: (two commands)
+- Least privilege means: 
